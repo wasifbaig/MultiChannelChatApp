@@ -12,8 +12,8 @@
       "callback" : "http://localhost:6789/auth/facebook/callback"
     },
     "github": {
-      "clientid" : "yourClientID",
-      "clientsecret" : "yourClientSecret",
+      "clientid" : "e4703f77f41c203e8682",
+      "clientsecret" : "a1e0db014a40279655ca18d6c631390b131202c1",
       "callback" : "http://localhost:6789/auth/github/callback"
     }
   },
