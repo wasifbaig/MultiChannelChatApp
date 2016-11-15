@@ -975,7 +975,7 @@ body.home-page .homepage-container .login-box .logo {
   width: auto;
 }
 body.home-page .homepage-container .login-box p {
-  line-height: 2em;
+  /*line-height: 2em;*/
 }
 body.home-page .homepage-container .slideshow,
 body.home-page .homepage-container .homepage-container .login-box {
