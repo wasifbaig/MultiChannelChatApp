@@ -1,0 +1,32 @@
+extends layout
+
+block content
+	.homepage-container
+		.slideshow
+			#slideshow
+				.slide
+					h2 MultiChannel Chat Application
+					.slide-image
+			// #slideshow
+			
+		.login-box
+			.inner-padding
+				img.logo(src='img/rightPanelLogo.jpg', width='217', height='239', alt='Logo')
+				h3 Ready to go web chat room.
+				p
+					a#twitbutt.sb.sb-small.sb-twitter(href="/auth/twitter") 
+						i 
+						| Sign in with Twitter
+					em or
+					a#fbbutt.sb.sb-small.sb-facebook(href="/auth/facebook") 
+						i
+						| Sign in with facebook
+
+		// #login-box 
+	// .homepage-container
+	
+	footer
+		| Advance Application Programming Project
+
+	// JavaScript at the bottom for fast page loading 
+
