@@ -6,14 +6,15 @@ block content
 		header
 			include status_dropdown
 			include rooms_dropdown
-			a.button-circle.invite.fancybox(href='#invite', style="display:none;")
+                        
+			a.drawing(href='/'+room.key+'/drawing',target="_blank") White Board
 				strong
 					span
 						i
 			#invite.modal.modal-invite(style='display: none')
 				h2 Invite people to join the room
 					.modal-content
-						p Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+						p Lorem ipsum dolor sit amet, consectetur ,adipiscing elit. 
 					.tweet-user
 						input.(type='text', name='', value='')
 					.tweet-user
@@ -38,7 +39,7 @@ block content
 		sidebar
 			include chat_list
 			include files_list
-			a(href="https://github.com/gravityonmars/Balloons.IO", target="_blank", class="sidebar-open-source") get the code from github
+			//a(href="https://github.com/gravityonmars/Balloons.IO", target="_blank", class="sidebar-open-source") get the code from github
 
 		.content(role='main')
 			.chat

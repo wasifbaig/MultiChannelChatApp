@@ -37,6 +37,7 @@ function Routes (app) {
     } else{
       res.render('index');
     }
+    
   });
 
   /*
@@ -75,6 +76,18 @@ function Routes (app) {
       })
     );
   }
+  
+    if(config.auth.google.clientid.length) {
+    app.get('/auth/google', passport.authenticate('google',{ scope: ['profile','email']}
+    ));
+
+    app.get('/auth/google/callback', 
+      passport.authenticate('google', {
+        successRedirect: '/',
+        failureRedirect: '/'
+      })
+    );
+  }
 
   app.get('/logout', function(req, res){
     req.logout();
@@ -91,6 +104,37 @@ function Routes (app) {
     });
   });
 
+    app.get('/:id/drawing', utils.restrict, function(req, res) {
+//    utils.getPublicRoomsInfo(client, function(rooms) {
+//         utils.getUsersInRoom(req, res, client, room, function(users) {
+//            res.render('drawing');
+//         });
+//    });
+    
+     utils.getRoomInfo(req, res, client, function(room) {
+      utils.getUsersInRoom(req, res, client, room, function(users) {
+        utils.getPublicRoomsInfo(client, function(rooms) {
+          utils.getUserStatus(req.user, client, function(status) {
+            
+              res.locals({
+                    room: room,
+                    rooms: rooms,
+                    user: {
+                      nickname: req.user.username,
+                      provider: req.user.provider,
+                      status: status
+                    },
+                    users_list: users
+                });
+            
+            res.render('drawing');
+            
+          });
+        });
+      });
+    });
+    
+  });
   /*
    * Create a rooom
    */
@@ -119,4 +163,17 @@ function Routes (app) {
     });
   });
 
+
+ 
+
 }
+
+
+
+
+
+
+
+
+
+

@@ -63,6 +63,19 @@ function Sockets (app, server) {
 
 
   io.sockets.on('connection', function (socket) {
+      
+
+        console.log('call io1');
+	// Start listening for mouse move events
+	socket.on('mousemove', function (data) {
+		
+                console.log('mouse move');
+		// This line sends the event (broadcasts it)
+		// to everyone except the originating client.
+		socket.broadcast.emit('moving', data);
+	});
+
+      
     var hs = socket.handshake
       , nickname = hs.balloons.user.username
       , provider = hs.balloons.user.provider
