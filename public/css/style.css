@@ -39,7 +39,7 @@ textarea {
 body {
   margin: 0;
   font-size: 1em;
-  line-height: 1.4;
+  /*line-height: 1.4;*/
 }
 ::-moz-selection {
   background: #f4e489;
@@ -265,7 +265,7 @@ body {
 a {
   text-decoration: none;
   font-weight: bold;
-  color: #BFBFBF;
+  color: #fff;
 }
 input.text {
   border: 1px solid #ccc;
@@ -565,11 +565,11 @@ sidebar div.online .people a {
 }
 sidebar div.online {
   overflow: hidden;
-  height: 100%;
+  height: 65%;
 }
 sidebar div.files {
-  height: 18%;
-  display: none;
+  height: 35%;
+  display: block;
 }
 sidebar div.online .people a {
   display: block;
