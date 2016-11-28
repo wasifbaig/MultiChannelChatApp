@@ -6,7 +6,8 @@
 var passport = require('passport')
   , TwitterStrategy = require('passport-twitter').Strategy
   , FacebookStrategy = require('passport-facebook').Strategy
-  , GitHubStrategy = require('passport-github').Strategy;
+  , GitHubStrategy = require('passport-github').Strategy
+  , GoogleStrategy = require('passport-google-oauth2').Strategy;
 
 /**
  * Expose Authentication Strategy
@@ -62,6 +63,18 @@ function Strategy (app) {
         clientID: config.auth.github.clientid,
         clientSecret: config.auth.github.clientsecret,
         callbackURL: config.auth.github.callback
+      },
+      function(token, tokenSecret, profile, done) {
+        return done(null, profile);
+      }
+    ));
+  }
+   if(config.auth.google.clientid.length) {
+    passport.use(new GoogleStrategy({
+        clientID: config.auth.google.clientid,
+        clientSecret: config.auth.google.clientsecret,
+        callbackURL: config.auth.google.callback,
+        //passReqToCallback   : true
       },
       function(token, tokenSecret, profile, done) {
         return done(null, profile);
