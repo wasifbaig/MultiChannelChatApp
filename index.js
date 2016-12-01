@@ -43,12 +43,12 @@ require('./routes')(app);
 if(app.get('config').credentials) {
   exports.server = require('https')
   .createServer(app.get('config').credentials, app).listen(app.get('port'), function() {
-    console.log('Balloons.io started on port %d', app.get('port'));
+    console.log('Multichannel chat application started on port %d', app.get('port'));
   });
 } else {
   exports.server = require('http')
   .createServer(app).listen(app.get('port'), function() {
-    console.log('Balloons.io started on port %d', app.get('port'));
+    console.log('Multichannel chat application started on port %d', app.get('port'));
   });
 }
 
