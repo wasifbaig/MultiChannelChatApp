@@ -48,7 +48,7 @@ if(app.get('config').credentials) {
 } else {
   exports.server = require('http')
   .createServer(app).listen(app.get('port'), function() {
-    console.log('Multichannel chat application started on port %d', app.get('port'));
+    console.log('Multichannel chat application started on port %d', app.get('port')); // for the console operations 
   });
 }
 

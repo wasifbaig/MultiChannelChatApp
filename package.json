@@ -1,5 +1,5 @@
 {
-  "name": "Balloons.io",
+  "name": "MultiChannel Chat Application",
   "description": "Web multi-room chat server and client ready to use.",
   "version": "0.0.1",
   "dependencies": {

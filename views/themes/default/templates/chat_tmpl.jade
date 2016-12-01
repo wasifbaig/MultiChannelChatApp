@@ -1,8 +1,8 @@
 script#chat_box(type='text/html')
   .chat-box(data-user='{{ nickname }}', data-provider='{{ provider }}', data-type='{{ type }}')
     div(class="avatar avatar-{{ provider }}")
-      img(src='http://avatars.io/{{ provider }}/{{ nickname }}')
-      a(href="https://{{ provider }}.com/{{ nickname }}")(target='_blank')
+      img(src='{{ userImg }}')
+      a(href="{{ profileLink }}")(target='_blank')
     h5
       | {{ nickname }}
     {{> chat_box_text }}
@@ -23,4 +23,4 @@ script#people_box(type='text/html')
     | {{ nickname }}
 
 script#title_template(type='text/html')
-  | {{#count}} ({{ count }}) {{/count}} {{ roomName }} - Balloons.IO
+  | {{#count}} ({{ count }}) {{/count}} {{ roomName }} - MultiChannel Chat App
