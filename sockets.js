@@ -64,8 +64,6 @@ function Sockets (app, server) {
 
   io.sockets.on('connection', function (socket) {
       
-
-        console.log('call io1');
 	// Start listening for mouse move events
 	socket.on('mousemove', function (data) {
 		
@@ -79,14 +77,41 @@ function Sockets (app, server) {
     var hs = socket.handshake
       , nickname = hs.balloons.user.username
       , provider = hs.balloons.user.provider
-      , userKey = provider + ":" + nickname
       , room_id = hs.balloons.room
       , now = new Date()
       // Chat Log handler
-      , chatlogFileName = './chats/' + room_id + (now.getFullYear()) + (now.getMonth() + 1) + (now.getDate()) + ".txt"
+      , chatlogFileName = './chats/' + room_id + (now.getFullYear()) + (now.getMonth() + 1) + (now.getDate()) + ".txt";
       // , chatlogWriteStream = fs.createWriteStream(chatlogFileName, {'flags': 'a'});
 
     socket.join(room_id);
+    
+    var userImg = ''
+        , profileLink = ''
+        , userId = hs.balloons.user.id;
+        
+        
+    if(hs.balloons.user.provider === 'facebook'){
+        nickname = hs.balloons.user.displayName;
+        profileLink = "https://facebook.com/" + userId;
+        userImg = "http://avatars.io/facebook/" + userId;
+    }
+    else if(hs.balloons.user.provider === 'twitter'){
+        nickname = hs.balloons.user.displayName;
+        profileLink = "https://twitter.com/" + hs.balloons.user.username;
+        userImg = "http://avatars.io/twitter/" + hs.balloons.user.username;
+    }
+    else if(hs.balloons.user.provider === 'github'){
+        nickname = hs.balloons.user.username;
+        profileLink = hs.balloons.user.profileUrl;
+        userImg = hs.balloons.user._json.avatar_url;
+    }
+    else if(hs.balloons.user.provider === 'google'){
+        nickname = hs.balloons.user.displayName;
+        profileLink =  hs.balloons.user._json.url;
+        userImg =  hs.balloons.user._json.image.url;
+    }
+    
+      var userKey = provider + ":" + nickname + ":" + userId;  
 
     client.sadd('sockets:for:' + userKey + ':at:' + room_id, socket.id, function(err, socketAdded) {
       if(socketAdded) {
@@ -98,7 +123,10 @@ function Sockets (app, server) {
               io.sockets.in(room_id).emit('new user', {
                 nickname: nickname,
                 provider: provider,
-                status: status || 'available'
+                status: status || 'available',
+                userId : userId,
+                userImg : userImg,
+                profileLink : profileLink
               });
             });
           }
@@ -121,7 +149,10 @@ function Sockets (app, server) {
         io.sockets.in(room_id).emit('new msg', {
           nickname: nickname,
           provider: provider,
-          msg: data.msg
+          msg: data.msg,
+          userId: userId,
+          userImg : userImg,
+          profileLink : profileLink
         });        
       }   
     });
@@ -133,7 +164,10 @@ function Sockets (app, server) {
         io.sockets.emit('user-info update', {
           username: nickname,
           provider: provider,
-          status: status
+          status: status,
+          userId: userId,
+          userImg : userImg,
+          profileLink : profileLink
         });
       });
     });
