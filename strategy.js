@@ -41,6 +41,7 @@ function Strategy (app) {
         callbackURL: config.auth.twitter.callback
       },
       function(token, tokenSecret, profile, done) {
+
         return done(null, profile);
       }
     ));
@@ -53,6 +54,7 @@ function Strategy (app) {
         callbackURL: config.auth.facebook.callback
       },
       function(accessToken, refreshToken, profile, done) {
+
         return done(null, profile);
       }
     ));
@@ -65,11 +67,12 @@ function Strategy (app) {
         callbackURL: config.auth.github.callback
       },
       function(token, tokenSecret, profile, done) {
-        return done(null, profile);
+          return done(null, profile);
       }
     ));
   }
-   if(config.auth.google.clientid.length) {
+  
+ if(config.auth.google.clientid.length) {
     passport.use(new GoogleStrategy({
         clientID: config.auth.google.clientid,
         clientSecret: config.auth.google.clientsecret,
@@ -81,5 +84,6 @@ function Strategy (app) {
       }
     ));
   }
+  
 }
 
