@@ -569,7 +569,7 @@ sidebar div.online {
 }
 sidebar div.files {
   height: 35%;
-  display: block;
+  display: none;
 }
 sidebar div.online .people a {
   display: block;
@@ -941,7 +941,7 @@ img {
   width: auto;
 }
 body.home-page {
-  background: #f1f1f1 url("../img/bg-site.png");
+  /*background: #f1f1f1 url("../img/bg-site.png");*/
   position: relative;
 }
 body.home-page .inner-padding {
@@ -961,6 +961,7 @@ body.home-page .homepage-container .login-box {
   right: 0;
   text-align: center;
   width: 300px;
+  border : 1px solid #ccc;
 }
 body.home-page .homepage-container .login-box em {
   display: block;
@@ -1379,3 +1380,5 @@ input::-moz-input-placeholder {
     page-break-after: avoid;
   }
 }
+
+.social{ color:blue !important; }
