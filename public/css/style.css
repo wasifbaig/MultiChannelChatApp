@@ -333,10 +333,12 @@ a.away b {
   z-index: 10000;
 }
 header {
-  background-image: -webkit-gradient(linear, 0 0, 0 34, color-stop(0.058, #555), to(#242424));
+  /*background-image: -webkit-gradient(linear, 0 0, 0 34, color-stop(0.058, #555), to(#242424));
   background-image: -webkit-linear-gradient(#555 5.8%, #242424);
   background-image: -moz-linear-gradient(#555 5.8%, #242424);
   background-image: -o-linear-gradient(#555 5.8%, #242424);
+  */
+  background: #222 url("../img/bg-sidebar.png"); 
   padding: 0.9em;
   z-index: 1000;
   position: absolute;
@@ -392,6 +394,8 @@ header .button-circle.lock.active span i {
   position: relative;
 }
 .dropdown .selected {
+	/* background modification for already selected room*/
+	background: #222 url("../img/bg-sidebar.png"); 
   border: 1px solid #141617;
   padding: 6px 30px 6px 10px;
   display: block;
@@ -401,6 +405,9 @@ header .button-circle.lock.active span i {
 }
 .dropdown .selected:hover,
 .dropdown .selected.active {
+	/*
+	ussama edit teal background for selected chatroom*/
+	background: #222 url("../img/bg-sidebar.png"); 
   border: 1px solid rgba(255,255,255,0.6);
   box-shadow: 0 0 4px rgba(255,255,255,0.2);
 }
@@ -942,6 +949,7 @@ img {
 }
 body.home-page {
   /*background: #f1f1f1 url("../img/bg-site.png");*/
+  background: #f1f1f1 url("../img/test.png");
   position: relative;
 }
 body.home-page .inner-padding {
@@ -949,6 +957,7 @@ body.home-page .inner-padding {
 }
 body.home-page .homepage-container {
   width: 824px;
+  height: 1000px;
   padding-top: 10em;
   overflow: hidden;
   margin: auto;

@@ -6,18 +6,22 @@ block content
 			#slideshow
 				.slide
 					h2 MultiChannel Chat Application
+					button(on click="move()") Login
+					button(on click="move()") Register
+					
 					.slide-image
-					p.login_head Login or Register with:
-						a.btn.btn-default(href="/login")
-							span.fa.fa-user Login
-						a.btn.btn-default(href="/signup")
-							span.fa.fa-user Register
+					//p.login_head Login or Register with:
+						//a.btn.btn-default(href="/login")
+							//span.fa.fa-user Login
+						//a.btn.btn-default(href="/signup")
+							//span.fa.fa-user Register
+					
 			// #slideshow
 			
 		.login-box
 			.inner-padding
 				img.logo(src='img/rightPanelLogo.jpg', width='217', height='239', alt='Logo')
-				h3 Ready to go web chat room.
+				h3 Login using Social Media
 				p
 					a#twitbutt.sb.sb-small.social(href="/auth/twitter") 
 						i 
@@ -40,6 +44,6 @@ block content
 	
 	footer
 		| Advance Application Programming Project
-
+		//img.logo(src='img/wood.jpg', width='217', height='239', alt='Logo')
 	// JavaScript at the bottom for fast page loading 
 
