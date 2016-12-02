@@ -7,7 +7,7 @@ $(function(){
 	}
 
 	// The URL of your web server (the port is set in app.js)
-	var url = 'http://localhost:8080';
+	var url = 'http://localhost:6789';
 
 	var doc = $(document),
 		win = $(window),
@@ -28,6 +28,7 @@ $(function(){
 	
 	socket.on('moving', function (data) {
 		
+                console.log('Moving');
 		if(! (data.id in clients)){
 			// a new user has come online. create a cursor for them
 			cursors[data.id] = $('<div class="cursor">').appendTo('#cursors');

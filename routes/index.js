@@ -29,8 +29,16 @@ function Routes (app) {
 
   app.get('/', function(req, res, next) {
     if(req.isAuthenticated()){
+        
+        var userStr = '';
+        if(req.user.provider === 'facebook')
+            userStr = req.user.provider + ":" + req.user.displayName +":"+ req.user.id;
+        else
+            userStr = req.user.provider + ":" + req.user.username +":"+ req.user.username;
+
+        
       client.hmset(
-          'users:' + req.user.provider + ":" + req.user.username
+          'users:' + userStr
         , req.user
       );
       res.redirect('/rooms');
@@ -104,13 +112,13 @@ function Routes (app) {
     });
   });
 
+  
+   /*
+   * Drawing Page
+   */
+  
     app.get('/:id/drawing', utils.restrict, function(req, res) {
-//    utils.getPublicRoomsInfo(client, function(rooms) {
-//         utils.getUsersInRoom(req, res, client, room, function(users) {
-//            res.render('drawing');
-//         });
-//    });
-    
+
      utils.getRoomInfo(req, res, client, function(room) {
       utils.getUsersInRoom(req, res, client, room, function(users) {
         utils.getPublicRoomsInfo(client, function(rooms) {
@@ -135,6 +143,8 @@ function Routes (app) {
     });
     
   });
+  
+  
   /*
    * Create a rooom
    */
