@@ -45,7 +45,7 @@ function Strategy (app) {
         return done(null, profile);
       }
     ));
-  } 
+  }
 
   if(config.auth.facebook.clientid.length) {
     passport.use(new FacebookStrategy({
@@ -71,7 +71,7 @@ function Strategy (app) {
       }
     ));
   }
-  
+
  if(config.auth.google.clientid.length) {
     passport.use(new GoogleStrategy({
         clientID: config.auth.google.clientid,
@@ -84,6 +84,6 @@ function Strategy (app) {
       }
     ));
   }
-  
+
 }
 
