@@ -3,6 +3,16 @@
  * Module dependencies
  */
 
+ /*const MongoClient = require('mongodb').MongoClient
+
+ MongoClient.connect('mongodb://localhost/chat', (err, database) => {
+  if (err) return console.log(err)
+    db = database
+  app.listen(3000, function() {
+    console.log('Mongodb is listening on 3000')
+  })
+})*/
+
 var sio = require('socket.io')
   , parseCookies = require('connect').utils.parseSignedCookies
   , cookie = require('cookie')
@@ -153,7 +163,8 @@ function Sockets (app, server) {
           userId: userId,
           userImg : userImg,
           profileLink : profileLink
-        });        
+        });
+        //db.mychats.save( {nickn: nickname, prov: provider, msgz: msg, uid: userId, uimg: userImg, plnk: profileLink} )        
       }   
     });
 

@@ -1,5 +1,5 @@
 {
-  "name": "MultiChannel Chat Application",
+  "name": "MultiChannelChatApp",
   "description": "Web multi-room chat server and client ready to use.",
   "version": "0.0.1",
   "dependencies": {
@@ -16,7 +16,8 @@
     "passport-github": "~0.1.5",
     "passport-twitter": "~0.1.5",
     "redis": "0.7.2",
-    "socket.io": "~0.9.16"
+    "socket.io": "~0.9.16",
+    "mongoose": "4.7.2"
   },
   "engines": {
     "node": ">= 0.8.0",
