@@ -23,25 +23,6 @@ http.createServer(function(request, response,db){
         var query = url_parts.query;
 
     var setval = {id : 4,username: query.name, email: query.email, password: query.pass};
-    //     db.query('INSERT INTO users  SET ?', setval, function (err, res) {
-    //         if (err)
-    //             throw err;
-    //
-    // });
-
-console.log(setval);
-    // if (mongo) {console.log("mongo  connected here ss");}
-    // // The ../db_mongo.js file is now exporting a function that takes a callback; usage of the database has to happen inside that callback
-    //     mongo(function(err, db){
-    //         var userCollection =   db.collection('users');
-    //         userCollection.insert((setval, function(err, result)
-    //         {
-    //             if(err) { throw err; }
-    //             res.write("<p>Product inserted:</p>");
-    //             res.end("<p>" + result[0].make + " " + result[0].model + "</p>");
-    //         }));
-    //     });
-
 
 
 
@@ -69,4 +50,4 @@ console.log(setval);
     });
 
 
-}).listen(8001);
+}).listen(1101);

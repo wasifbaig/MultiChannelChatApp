@@ -41,13 +41,22 @@ exports.findById = function(id, cb) {
     });
 
     process.nextTick(function() {
-        var idx = id - 1;
-        // console.log(records[idx]);
-        if (records[idx]) {
 
+        var recc = MongoClient.connect(url, function(err, db) {
+            assert.equal(null, err);
+            records_(db, function() {
+                db.close();
+            });
+        });
+
+
+        var idx = id - 1;
+        // console.log(records);
+        if (records[idx]) {
+            // console.log(records[idx]);
             cb(null, records[idx]);
         } else {
-            cb(new Error('User ' + id + ' does not exist'));
+            cb(null, 1);
 
         }
     });

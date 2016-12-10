@@ -25,7 +25,10 @@ var app = exports.app = express();
  */
 
 require('./config')(app);
-require('./app_session') ;
+require('./app_session');
+require('./routes/RegUserG');
+
+
 
 // var mongoUtil = require( './db_mongo' );
 

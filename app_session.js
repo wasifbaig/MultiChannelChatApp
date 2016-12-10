@@ -38,7 +38,8 @@ passport.serializeUser(function(user, cb) {
 });
 
 passport.deserializeUser(function(id, cb) {
-    db.findById(id, function (err, user) {
+
+    db.findById(id, function (err, user) { console.log(user);
         if (err) { return cb(err); }
         cb(null, user);
     });
@@ -50,10 +51,6 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hjs');
 
-// Use application-level middleware for common functionality, including
-// logging, parsing, and session handling.
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -64,44 +61,5 @@ app.use(require('express-session')({ secret: 'keyboard cat', resave: false, save
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-// API routes
-// app.get('/', function(req, res, next) {
-//     if(!req.user) {
-//         res.render('login');
-//         console.log('73');
-//     }
-//     else
-//         res.render('index', { userName: req.user.displayName });
-// });
-//
-// app.get('/login', function(req, res, next) {
-//     res.render('login');
-//     console.log("162 strategy");
-// });
-//
-// app.post('/login',
-//     passport.authenticate('local', { failureRedirect: '/' }),
-//     function(req, res) {
-//         res.redirect('/');
-//     }
-//
-// );
-//
-// app.get('/signup', function(req, res, next) {
-//     res.render('signup');
-// });
-//
-// app.post('/signup', function(req, res, next) {
-//     console.log(req.body);
-//     db.addUser(req.body);
-//     res.redirect('/');
-// });
-//
-// app.get('/logout', function(req, res, next){
-//     req.logout();
-//     res.redirect('/');
-// });
-//
 
 module.exports = app;

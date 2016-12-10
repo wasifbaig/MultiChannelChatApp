@@ -1,23 +1,3 @@
-// // connect3.js
-// var mongodb = require('mongodb');
-// var MongoClient = mongodb.MongoClient;
-// var url = 'mongodb://localhost:27017/test';
-//
-// module.exports = MongoClient.connect(url, function (err, db) {
-//     if (err) {
-//         console.log('Unable to connect to the mongoDB server. Error:', err);
-//     } if(!err) {
-//         console.log('Connection established to', url);
-//         return db;
-//     }
-// });
-//
-// exports.findAll = function(req, res) {
-//     var collection = req.db.collection('users');
-//     collection.find().toArray(function (err, result) {
-//         res.send(result);
-//     });
-// }
 
 var records = [
     { id: 1, username: 'jack', password: 'secret', displayName: 'Jack', email: 'jack@example.com'  }

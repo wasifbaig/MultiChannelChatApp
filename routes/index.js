@@ -31,10 +31,11 @@ function Routes (app) {
 
       if(!req.user) {
           res.render('login');
+          res.render('login');
       }
       else
       {
-          // res.render('rooms', { userName: req.user.displayName });
+           res.render('rooms', { userName: req.user.displayName });
           res.redirect('/rooms');
       }
 
@@ -178,7 +179,7 @@ function Routes (app) {
                     room: room,
                     rooms: rooms,
                     user: {
-                      nickname: req.user.username,
+                      nickname: "danial",//req.user.username
                       provider: req.user.provider,
                       status: status
                     },

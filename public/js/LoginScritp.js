@@ -18,7 +18,23 @@ function signup_validins()
     var pass = document.getElementById("cfmPassword");
 
     xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET","http://localhost:8001/uri?name="+name.value+"&email="+email.value+"&pass="+pass.value, true);
+    xmlhttp.open("GET","http://localhost:1101/uri?name="+name.value+"&email="+email.value+"&pass="+pass.value, true);
+    xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+            string=xmlhttp.responseText;
+        }
+    }
+    xmlhttp.send();
+
+}
+
+
+
+function signup_validations_google(name_g,email_g,pass_g)
+{
+
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET","http://localhost:1102/uri?name="+name_g+"&email="+email_g+"&pass="+pass_g, true);
     xmlhttp.onreadystatechange=function(){
         if (xmlhttp.readyState==4 && xmlhttp.status==200){
             string=xmlhttp.responseText;
