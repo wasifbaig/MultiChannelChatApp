@@ -30,7 +30,7 @@
     "port": 6789
   },
   "history": {
-    "viewlimit": 15
+    "viewlimit": 50
   },
   "theme": {
     "name" : "default"
