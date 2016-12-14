@@ -2,7 +2,7 @@
  * Module dependencies
  */
  
- const MongoClient = require('mongodb').MongoClient
+ /*const MongoClient = require('mongodb').MongoClient
 
  MongoClient.connect('mongodb://localhost/chat', (err, database) => {
   if (err) return console.log(err)
@@ -10,7 +10,7 @@
   app.listen(3000, function() {
     console.log('Mongodb is listening on 3000')
   })
-})
+})*/
 
 var express = require('express')
   , init = require('./init')
