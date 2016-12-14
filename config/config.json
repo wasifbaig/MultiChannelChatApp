@@ -29,6 +29,9 @@
   "app": {
     "port": 6789
   },
+  "history": {
+    "viewlimit": 50
+  },
   "theme": {
     "name" : "default"
   }

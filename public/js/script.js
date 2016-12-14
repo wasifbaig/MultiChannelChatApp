@@ -122,6 +122,36 @@ $(function() {
       USERS[data.provider + ":" + data.nickname] = 1;
     }
   });
+  
+  
+  
+  //userIsWriting status update 
+  socket.on('w status2', function(data) {
+ var to1=data.to;
+	
+    // Update users list
+	if(data.to==true){
+    $('.people a[data-username=' + data.username + '][data-provider="' + data.provider + '"]')
+	
+	
+	//.append(data.to)
+	.css("background-color", "lightgray");
+	
+	} 
+	else 
+	if(data.to==false){
+	$('.people a[data-username=' + data.username + '][data-provider="' + data.provider + '"]')
+	//.append(data.to)
+	.css("background-color", "");
+	
+	}
+	
+
+  });
+  
+  
+  
+  
 
   socket.on('user-info update', function(data) {
     var message = "$username is now $status.";
@@ -231,7 +261,30 @@ $(function() {
     }
   });
 
+   //userIsWriting Flag and interval value
+ var f=10;
+ var to=false;
+ //fuction to send userIsWriting after certain interval
+ setInterval(function(){
+		
+		f=f-2;
+		if(f<1){
+			
+		socket.emit('w status1', {
+      status: $(this).data('status'),
+	  to: false
+    });	
+			
+			
+		}
+		
+	},1000);
+ 
+ 
+
   $(".chat-input input").keypress(function(e) {
+	  f=false;
+	  
     var inputText = $(this).val().trim();
     if(e.which == 13 && inputText) {
       var chunks = inputText.match(/.{1,1024}/g)
@@ -242,11 +295,30 @@ $(function() {
           msg: chunks[i]
         });
       }
-
+	
       $(this).val('');
 
       return false;
+	  
+	  
+	  
     }
+	
+	
+	
+	f=10;
+	socket.emit('w status1', {
+      status: $(this).data('status'),
+	  to: true
+    });
+	
+	
+	//socket.emit('my msg', {
+      //    msg: "xxxx"
+        //});
+	
+	
+	
   });
 
   $('.dropdown-status .list a.status').click(function(e) {

@@ -1,4 +1,3 @@
-
 /*
  * Module dependencies
  */
@@ -80,8 +79,9 @@ function Sockets (app, server) {
       , room_id = hs.balloons.room
       , now = new Date()
       // Chat Log handler
-      , chatlogFileName = './chats/' + room_id + (now.getFullYear()) + (now.getMonth() + 1) + (now.getDate()) + ".txt";
+      , chatlogFileName = './chats/' + room_id + (now.getFullYear()) + (now.getMonth() + 1) + (now.getDate()) + ".txt"
       // , chatlogWriteStream = fs.createWriteStream(chatlogFileName, {'flags': 'a'});
+      , chatlogKey = 'chats:' + room_id;
 
     socket.join(room_id);
     
@@ -145,6 +145,9 @@ function Sockets (app, server) {
         }
 
         // chatlogWriteStream.write(JSON.stringify(chatlogRegistry) + "\n");
+        if(config.history) {
+          client.lpush(chatlogKey, JSON.stringify(chatlogRegistry))
+        }
         
         io.sockets.in(room_id).emit('new msg', {
           nickname: nickname,
@@ -156,6 +159,29 @@ function Sockets (app, server) {
         });        
       }   
     });
+	
+	
+	socket.on('w status1', function(data) {
+      var status = data.status;
+	  
+      client.set('users:' + userKey + ':status', status, function(err, statusSet) {
+        io.sockets.emit('w status2', {
+          username: nickname,
+          provider: provider,
+          status: status,
+          userId: userId,
+          userImg : userImg,
+          profileLink : profileLink,
+		  to: data.to
+        });
+      });
+    });
+	
+	
+	
+	
+	
+	
 
     socket.on('set status', function(data) {
       var status = data.status;
@@ -173,22 +199,19 @@ function Sockets (app, server) {
     });
 
     socket.on('history request', function() {
-      var history = [];
-      var tail = require('child_process').spawn('tail', ['-n', 5, chatlogFileName]);
-      tail.stdout.on('data', function (data) {
-        var lines = data.toString('utf-8').split("\n");
-        
-        lines.forEach(function(line, index) {
-          if(line.length) {
-            var historyLine = JSON.parse(line);
-            history.push(historyLine);
-          }
-        });
+      if(config.history) {
+        var history = [];
+        client.lrange(chatlogKey,0,(config.history.viewlimit || 5)-1,function (err, lines) {
+          lines.forEach(function(line) {
+              var historyLine = JSON.parse(line);
+              history.unshift(historyLine);
+          });
 
-        socket.emit('history response', {
-          history: history
+          socket.emit('history response', {
+            history: history
+          });
         });
-      });
+      }
     });
 
     socket.on('disconnect', function() {
