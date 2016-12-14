@@ -210,6 +210,60 @@ $(function(){
 		size1=20;
 		
       }, false);
+	  
+	   document.getElementById('Red').addEventListener('click', function() {
+   
+		color1="Red";
+		
+      }, false);
+	  
+	  document.getElementById('Black').addEventListener('click', function() {
+   
+		color1="Black";
+		
+      }, false);
+	  
+	  document.getElementById('Blue').addEventListener('click', function() {
+   
+		color1="Blue";
+		
+      }, false);
+	  document.getElementById('Gray').addEventListener('click', function() {
+   
+		color1="Gray";
+		
+      }, false);
+	
+	
+	document.getElementById('Yellow').addEventListener('click', function() {
+   
+		color1="Yellow";
+		
+      }, false);
+	
+	document.getElementById('Green').addEventListener('click', function() {
+   
+		color1="Green";
+		
+      }, false);
+	
+	document.getElementById('Purple').addEventListener('click', function() {
+   
+		color1="Purple";
+		
+      }, false);
+	
+	document.getElementById('Lime').addEventListener('click', function() {
+   
+		color1="Lime";
+		
+      }, false);
+	document.getElementById('Aqua').addEventListener('click', function() {
+   
+		color1="Aqua";
+		
+      }, false);
+	  
 	
 
 });
