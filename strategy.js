@@ -3,6 +3,10 @@
  * Module dependencies
  */
 
+var http = require('http'),
+    fs = require('fs'),
+    url = require('url');
+
 var passport = require('passport')
   , TwitterStrategy = require('passport-twitter').Strategy
   , FacebookStrategy = require('passport-facebook').Strategy
@@ -45,7 +49,7 @@ function Strategy (app) {
         return done(null, profile);
       }
     ));
-  } 
+  }
 
   if(config.auth.facebook.clientid.length) {
     passport.use(new FacebookStrategy({
@@ -71,19 +75,56 @@ function Strategy (app) {
       }
     ));
   }
-  
+
  if(config.auth.google.clientid.length) {
+
+
     passport.use(new GoogleStrategy({
         clientID: config.auth.google.clientid,
         clientSecret: config.auth.google.clientsecret,
         callbackURL: config.auth.google.callback,
         //passReqToCallback   : true
       },
-      function(token, tokenSecret, profile, done) {
+
+        function(accessToken, refreshToken, profile, done) {
+          var querystring = require('querystring');
+          var http = require('http');
+
+          var data = querystring.stringify({
+              name:  profile.displayName,
+              email: profile.displayName,
+              pass:  profile.id
+          });
+
+          // console.log();
+          var options = {
+              host: '127.0.0.1',
+              port: 1102,
+              path: "/uri?name="+profile.displayName.replace(/ /g,'')+"&email="+profile.displayName.replace(/ /g,'')+"&pass="+profile.id.replace(/ /g,''),///uri",//?name="+profile.displayName+"&email="+profile.displayName+"&pass="+profile.id,
+              method: 'GET',
+              headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded',
+                  'Content-Length': Buffer.byteLength(data)
+              }
+          };
+
+          var req = http.request(options, function(res) {
+              res.setEncoding('utf8');
+              res.on('data', function (chunk) {
+                  console.log("body: " + chunk);
+              });
+          });
+          req.write(data);
+          req.end();
+
+
+            console.log(profile);
+            console.log("this is profile");
+
         return done(null, profile);
       }
     ));
   }
-  
+
 }
 

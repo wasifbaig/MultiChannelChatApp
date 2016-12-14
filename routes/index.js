@@ -28,15 +28,26 @@ function Routes (app) {
    */
 
   app.get('/', function(req, res, next) {
+
+      if(!req.user) {
+          res.render('login');
+          res.render('login');
+      }
+      else
+      {
+           res.render('rooms', { userName: req.user.displayName });
+          res.redirect('/rooms');
+      }
+
     if(req.isAuthenticated()){
-        
+
         var userStr = '';
         if(req.user.provider === 'facebook')
             userStr = req.user.provider + ":" + req.user.displayName +":"+ req.user.id;
         else
             userStr = req.user.provider + ":" + req.user.username +":"+ req.user.username;
 
-        
+
       client.hmset(
           'users:' + userStr
         , req.user
@@ -45,12 +56,52 @@ function Routes (app) {
     } else{
       res.render('index');
     }
-    
+
   });
 
-  /*
-   * Authentication routes
-   */
+
+
+
+
+
+
+
+
+
+    app.get('/login', function(req, res, next) {
+        res.render('login');
+    });
+
+    app.post('/login',
+        passport.authenticate('local', { failureRedirect: '/' }),
+        function(req, res) {
+
+
+            res.redirect('/');
+        }
+
+    );
+
+
+    app.get('/logout', function(req, res, next){
+        req.logout();
+        res.redirect('/');
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+    /*
+     * Authentication routes
+     */
 
   if(config.auth.twitter.consumerkey.length) {
     app.get('/auth/twitter', passport.authenticate('twitter'));
@@ -128,7 +179,7 @@ function Routes (app) {
                     room: room,
                     rooms: rooms,
                     user: {
-                      nickname: req.user.username,
+                      nickname: "danial",//req.user.username
                       provider: req.user.provider,
                       status: status
                     },
@@ -174,7 +225,7 @@ function Routes (app) {
   });
 
 
- 
+
 
 }
 

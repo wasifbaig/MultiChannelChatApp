@@ -1,3 +1,12 @@
+var express = require('express');
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var passport = require('passport');
+var Strategy = require('passport-local').Strategy;
+
 /*
  * Module dependencies
  */
@@ -16,6 +25,12 @@ var app = exports.app = express();
  */
 
 require('./config')(app);
+require('./app_session');
+require('./routes/RegUserG');
+
+
+
+// var mongoUtil = require( './db_mongo' );
 
 /*
  * Clean db and create folder
@@ -35,6 +50,9 @@ require('./strategy')(app);
  */
 
 require('./routes')(app);
+var user = require('./routes/RegUser');
+var luser = require('./routes/LognUser');
+
 
 /*
  * Web server
@@ -66,6 +84,9 @@ require('./sockets')(app, exports.server);
 process.on('uncaughtException', function(err){
   console.log('Exception: ' + err.stack);
 });
+
+
+
 
 
 
