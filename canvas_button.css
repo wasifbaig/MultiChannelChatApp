@@ -1,0 +1,140 @@
+
+
+
+
+
+      
+    
+	  #buttons1 {
+	  
+        position: absolute;
+        top: 60px;
+        left: 560px;
+		
+      }
+	  
+	   #buttons2 {
+	    padding:10px 20px;
+        position: absolute;
+        top: 50px;
+        left: 1175px;
+		
+      }
+	  #dropdown1 {
+	    padding:10px;
+        position: absolute;
+        top: 45px;
+        left: 1000px;
+		display: inline-block;
+		
+      }
+	  
+	  
+	  h22{
+	  padding:10px 10px;
+         position: absolute;
+        top: 60px;
+        left: 210px;
+		
+		
+      }
+	  
+	  
+	  #Red {
+	   padding:10px 20px;
+	   border:2px solid #ffffff;
+        background-color: Red;
+		
+      }
+	  
+	  #Black {
+	  padding:10px 20px;
+	  border:2px solid #ffffff;
+        background-color: Black
+		
+      }
+	  #Gray {
+	   padding:10px 20px;
+	   border:2px solid #ffffff;
+        background-color: #808080
+		
+      } 
+	  
+	  
+	   #Yellow {
+	    padding:10px 20px;
+		border:2px solid #ffffff;
+        background-color: #FFFF00
+		
+      } 
+	  
+	   #Blue {
+	   padding:10px 20px;
+	   border:2px solid #ffffff;
+        background-color: #0000FF
+		
+      } 
+	  
+	   #Purple {
+	    padding:10px 20px;
+		border:2px solid #ffffff;
+        background-color: #800080
+		
+      } 
+	  
+	   #Green{
+	    padding:10px 20px;
+		border:2px solid #ffffff;
+        background-color: #008000
+		
+      } 
+	   #Lime {
+	   border:2px solid #ffffff;
+	    padding:10px 20px;
+        background-color: #00FF00
+		
+      } 
+	   #Aqua {
+	   
+	    padding:10px 20px;
+		border:2px solid #ffffff;
+        background-color: #00FFFF
+		
+      } 
+	  .dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
+
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #f1f1f1}
+
+.show {display:block;}
+	  
+      
+    
