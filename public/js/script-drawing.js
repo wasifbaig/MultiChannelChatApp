@@ -32,6 +32,8 @@ $(function(){
 	var color1="back";
 	var size1;
 	
+	
+	
 	socket.on('moving', function (data) {
 		
                 console.log('Moving');
@@ -52,9 +54,13 @@ $(function(){
 			// Draw a line on the canvas. clients[data.id] holds
 			// the previous position of this user's mouse pointer
 			
+			
+			
+		
+			
 			drawLine(clients[data.id].x, clients[data.id].y, data.x, data.y);
-			size=data.size
-			color=data.color
+				size=data.size
+				color=data.color
 		}
 		
 		// Saving the current client state
@@ -72,6 +78,7 @@ $(function(){
 		
 		// Hide the instructions
 		instructions.fadeOut();
+		
 	});
 	
 	doc.bind('mouseup mouseleave',function(){
@@ -145,7 +152,18 @@ $(function(){
 	}
 	
 	
-	 
+      
+
+      // bind event handler to clear button
+      document.getElementById('clear').addEventListener('click', function() {
+        //size=20;
+		var canvas1 = document.getElementById('paper');
+		var context1 = canvas1.getContext('2d');
+		context1.clearRect(0, 0, canvas1.width, canvas1.height);
+		context1.beginPath();
+		
+		
+      }, false);
 	  
 	  
 	  
@@ -211,7 +229,9 @@ $(function(){
 		
       }, false);
 	  
-	   document.getElementById('Red').addEventListener('click', function() {
+	  
+	  
+	  document.getElementById('Red').addEventListener('click', function() {
    
 		color1="Red";
 		
@@ -264,6 +284,11 @@ $(function(){
 		
       }, false);
 	  
+	  document.getElementById('White').addEventListener('click', function() {
+   
+		color1="White";
+		
+      }, false);
 	
 
 });
