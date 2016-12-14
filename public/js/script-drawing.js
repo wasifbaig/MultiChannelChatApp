@@ -26,6 +26,12 @@ $(function(){
 
 	var socket = io.connect(url);
 	
+	var color="back";
+	var size;
+	
+	var color1="back";
+	var size1;
+	
 	socket.on('moving', function (data) {
 		
                 console.log('Moving');
@@ -47,6 +53,8 @@ $(function(){
 			// the previous position of this user's mouse pointer
 			
 			drawLine(clients[data.id].x, clients[data.id].y, data.x, data.y);
+			size=data.size
+			color=data.color
 		}
 		
 		// Saving the current client state
@@ -78,7 +86,9 @@ $(function(){
 				'x': e.pageX,
 				'y': e.pageY,
 				'drawing': drawing,
-				'id': id
+				'id': id,
+				'size': size1,
+				'color': color1
 			});
 			lastEmit = $.now();
 		}
@@ -88,7 +98,7 @@ $(function(){
 		
 		if(drawing){
 			
-			drawLine(prev.x, prev.y, e.pageX, e.pageY);
+			drawLine1(prev.x, prev.y, e.pageX, e.pageY);
 			
 			prev.x = e.pageX;
 			prev.y = e.pageY;
@@ -113,9 +123,93 @@ $(function(){
 	},10000);
 
 	function drawLine(fromx, fromy, tox, toy){
+		ctx.beginPath();
+		ctx.lineJoin = ctx.lineCap = 'round';
 		ctx.moveTo(fromx, fromy);
 		ctx.lineTo(tox, toy);
+		ctx.strokeStyle	= color;
+		ctx.lineWidth = size;
 		ctx.stroke();
+			
 	}
+	
+	function drawLine1(fromx, fromy, tox, toy){
+		ctx.beginPath();
+		ctx.lineJoin = ctx.lineCap = 'round';
+		ctx.moveTo(fromx, fromy);
+		ctx.lineTo(tox, toy);
+		ctx.strokeStyle	= color1;
+		ctx.lineWidth = size1;
+		ctx.stroke();
+			
+	}
+	
+	
+	 
+	  
+	  
+	  
+	   document.getElementById('s2').addEventListener('click', function() {
+   
+		size1=2;
+		
+      }, false);
+	  
+	  document.getElementById('s4').addEventListener('click', function() {
+   
+		size1=4;
+		
+      }, false);
+	  
+	  
+	  document.getElementById('s6').addEventListener('click', function() {
+   
+		size1=6;
+		
+      }, false);
+	  
+	  document.getElementById('s8').addEventListener('click', function() {
+   
+		size1=8;
+		
+      }, false);
+	  
+	  document.getElementById('s10').addEventListener('click', function() {
+   
+		size1=10;
+		
+      }, false);
+	  
+	  document.getElementById('s12').addEventListener('click', function() {
+   
+		size1=12;
+		
+      }, false);
+	  
+	  document.getElementById('s14').addEventListener('click', function() {
+   
+		size1=14;
+		
+      }, false);
+	  
+	  
+	  document.getElementById('s16').addEventListener('click', function() {
+   
+		size1=16;
+		
+      }, false);
+	  
+	  document.getElementById('s18').addEventListener('click', function() {
+   
+		size1=18;
+		
+      }, false);
+	  
+	  document.getElementById('s20').addEventListener('click', function() {
+   
+		size1=20;
+		
+      }, false);
+	
 
 });
