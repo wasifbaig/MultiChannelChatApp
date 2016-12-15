@@ -1,0 +1,173 @@
+<link rel="stylesheet" type="text/css" href="./css/style.css" />
+<link rel="stylesheet" type="text/css" href="./css/login-style.css" />
+<link rel="stylesheet" type="text/css" href="./css/animate-custom.css" />
+
+<link rel="stylesheet" type="text/css" href="./css/bootstrap-social.css" />
+<link rel="stylesheet" type="text/css" href="./css/assets/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="./css/assets/css/docs.css" />
+<link rel="stylesheet" type="text/css" href="./css/assets/css/font-awesome.css" />
+
+<script src="./js/libs/jquery-1.7.1.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
+
+<body class="home-page">
+    
+    <div class="mainLogo"><img src="./img/logo.png"/></div>
+    
+    <div class="homepage-container">
+    <div class="slideshow">
+        <div id="slideshow">
+  
+            <section>				
+                <div id="container_demo">
+
+                    <a class="hiddenanchor" id="toregister"></a>
+                    <a class="hiddenanchor" id="tologin"></a>
+                    <div id="wrapper">
+                        <div id="login" class="animate form">
+                            <form id="loginForm" action="/login" method="post" autocomplete="on"> 
+                                <h1>Log in</h1> 
+                                <p> 
+                                    <label for="username" class="uname" data-icon="u"> Your email or username </label>
+                                    <input id="username" name="username" required="required" type="text" placeholder="myusername or mymail@mail.com">
+                                </p>
+                                <p> 
+                                    <label for="password" class="youpasswd" data-icon="p"> Your password </label>
+                                    <input id="password" name="password" required="required" type="password" placeholder="eg. X8df!90EO"> 
+                                </p>
+                                <p class="keeplogin"> 
+									<input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping"> 
+									<label for="loginkeeping">Keep me logged in</label>
+                                </p>
+                                
+                                <p id='loginErrorMsg' class='errormsg'></p>
+                                                                
+                                <p class="login lbutton"> 
+                                   <input type="submit" value="Login"> 
+				</p>
+                                
+                                <p class="change_link">
+									Not a member yet ?
+									<a href="#toregister" class="to_register">Sign Up</a>
+				</p>
+                                
+                                
+                            </form>
+                        </div>
+
+                        <div id="register" class="animate form">
+                            <form id="registrationForm"  method="post" action="/signup"> 
+                                <h1> Sign up </h1> 
+                                <p> 
+                                    <label for="usernamesignup" class="uname" data-icon="u">Your name</label>
+                                    <input id="usernamesignup" name="name" required="required" type="text" placeholder="abc">
+                                </p>
+                                <p> 
+                                    <label for="usernamesignup" class="uname" data-icon="u">Username</label>
+                                    <input id="usernamesignup" name="username" required="required" type="text" placeholder="mysuperusername690">
+                                </p>
+
+                                <p> 
+                                    <label for="passwordsignup" class="youpasswd" data-icon="p">Your password </label>
+                                    <input id="reg_password" name="password" required="required" type="password" placeholder="eg. X8df!90EO"  >
+                                </p>
+                                
+                                <p> 
+                                    <label class="youpasswd" data-icon="p">Profile Pic </label>
+                                    <input name="profile_pic"  type="file" accept="image/*" >
+                                </p>
+                                
+                                <p id='regErrorMsg' class='errormsg'></p>
+                                <p class="signin lbutton"> 
+                                    <input type="submit" value="Sign up"> 
+				</p>
+                                <p class="change_link">  
+									Already a member ?
+									<a href="#tologin" class="to_register"> Log In </a>
+								</p>
+                            </form>
+                        </div>
+						
+                    </div>
+                </div>  
+            </section>
+            
+</div><!-- #slideshow--></div>
+        
+        
+ <div class="login-box">
+     <div class="inner-padding">
+         <img src="img/rightPanelLogo.jpg" width="217" height="239" alt="Logo" class="logo">
+         <h3>Ready to go web chat room.</h3>
+         <p>
+             
+             <a href="/auth/twitter" class="btn btn-block btn-social btn-twitter"><span class="fa fa-twitter"></span> Sign in with Twitter</a><em>or</em>
+             <a href="/auth/facebook" class="btn btn-block btn-social btn-facebook"><span class="fa fa-facebook"></span> Sign in with Facebook</a><em>or</em>
+             <a href="/auth/github" class="btn btn-block btn-social btn-github"><span class="fa fa-github"></span> Sign in with GitHub</a><em>or</em>
+             <a href="/auth/google" class="btn btn-block btn-social btn-google"><span class="fa fa-google"></span> Sign in with Google</a>
+             
+ 
+         </p>
+     </div>
+ </div>
+        
+        
+ </div>
+    
+    <footer>Advance Application Programming Project</footer>
+ 
+    <script>
+        
+        $('document').ready(function(){
+            
+               $('#loginForm').submit(function(e) {
+		 
+                   e.preventDefault();
+                   $(this).ajaxSubmit({
+
+                        error: function(xhr) {
+                                        console.log('Error: ' + xhr.status);
+                        },
+
+                        success: function(response) {
+                       
+                            if(response !== '')
+                                $('#loginErrorMsg').text(response);
+                            else
+                                window.location = "/room";
+                        }
+                    });
+                    
+               }); //end
+               
+               
+                   $('#registrationForm').submit(function(e) {
+		 
+                   e.preventDefault();
+                   $(this).ajaxSubmit({
+
+                        error: function(xhr) {
+                                        console.log('Error: ' + xhr.status);
+                        },
+
+                        success: function(response) {
+
+                            if(response !== '')
+                                $('#regErrorMsg').text(response);
+                            else
+                                window.location = "/room";
+                        }
+                    });
+                    
+               }); //end
+               
+            
+        });
+        
+    </script>
+    
+        
+</body>
+
+
+       
