@@ -5,6 +5,7 @@
 
 var passport = require('passport')
   , utils = require('../utils');
+var LocalStrategy = require('passport-local').Strategy;
 
 /**
  * Expose routes

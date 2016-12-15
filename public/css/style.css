@@ -958,8 +958,8 @@ body.home-page .inner-padding {
 }
 body.home-page .homepage-container {
   width: 824px;
-  height: 1000px;
-  padding-top: 10em;
+  height: 700px;
+  padding-top: 3em;
   overflow: hidden;
   margin: auto;
   position: relative;
