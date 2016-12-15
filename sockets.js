@@ -186,6 +186,23 @@ function Sockets (app, server) {
       }   
     });
 
+	socket.on('w status1', function(data) {
+      var status = data.status;
+	  
+      client.set('users:' + userKey + ':status', status, function(err, statusSet) {
+        io.sockets.emit('w status2', {
+          username: nickname,
+          provider: provider,
+          status: status,
+          userId: userId,
+          userImg : userImg,
+          profileLink : profileLink,
+		  to: data.to
+        });
+      });
+    });
+	
+	
     socket.on('set status', function(data) {
       var status = data.status;
 
