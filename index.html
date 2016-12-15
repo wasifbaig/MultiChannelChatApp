@@ -1,26 +1,232 @@
 <!DOCTYPE html>
 <html>
+<head>
+
+
+
+    <style>
+      
 
     
-    <body>
-		<div id="cursors">
-	    	<!-- The mouse pointers will be created here -->
-		</div>
+	  #buttons1 {
+	  
+        position: absolute;
+        top: 60px;
+        left: 560px;
+		
+      }
+	  
+	   #buttons2 {
+	    padding:10px 20px;
+        position: absolute;
+        top: 50px;
+        left: 1175px;
+		
+      }
+	  #dropdown1 {
+	    padding:10px;
+        position: absolute;
+        top: 45px;
+        left: 1000px;
+		display: inline-block;
+		
+      }
+	  
+	  
+	  h22{
+	  padding:10px 10px;
+         position: absolute;
+        top: 60px;
+        left: 210px;
+		
+		
+      }
+	  
+	  
+	  #Red {
+	   padding:10px 20px;
+	   border:2px solid #ffffff;
+        background-color: Red;
+		
+      }
+	  
+	  #Black {
+	  padding:10px 20px;
+	  border:2px solid #ffffff;
+        background-color: Black
+		
+      }
+	  #Gray {
+	   padding:10px 20px;
+	   border:2px solid #ffffff;
+        background-color: #808080
+		
+      } 
+	  
+	  
+	   #Yellow {
+	    padding:10px 20px;
+		border:2px solid #ffffff;
+        background-color: #FFFF00
+		
+      } 
+	  
+	   #Blue {
+	   padding:10px 20px;
+	   border:2px solid #ffffff;
+        background-color: #0000FF
+		
+      } 
+	  
+	   #Purple {
+	    padding:10px 20px;
+		border:2px solid #ffffff;
+        background-color: #800080
+		
+      } 
+	  
+	   #Green{
+	    padding:10px 20px;
+		border:2px solid #ffffff;
+        background-color: #008000
+		
+      } 
+	   #Lime {
+	   border:2px solid #ffffff;
+	    padding:10px 20px;
+        background-color: #00FF00
+		
+      } 
+	   #Aqua {
+	   
+	    padding:10px 20px;
+		border:2px solid #ffffff;
+        background-color: #00FFFF
+		
+      } 
+	  .dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
 
-		<canvas id="paper" width="1900" height="1000">
-			Your browser needs to support canvas for this to work!
-		</canvas>
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
+
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #f1f1f1}
+
+.show {display:block;}
+	  
+      
+    </style>
+  </head>
+			<body>
+				<div id="cursors">
+					<!-- The mouse pointers will be created here -->
+				</div>
+				
+				<div id="dropdown1">
 		
-		
-		
-        <footer>
-	        <h2>MultiApp Chat Application</h2>
+							<button onclick="myFunction()" class="dropbtn">Choose colour & size</button>
+							 <div id="myDropdown" class="dropdown-content">
+							 <input type="button" id="Red"    >
+							 <input type="button" id="Black"  >
+							 <input type="button" id="Gray"  >
+							 <input type="button" id="Blue"  >
+							 <input type="button" id="Yellow"  >
+							 <input type="button" id="Purple"  >
+							 <input type="button" id="Green"  >
+							 <input type="button" id="Lime"  >
+							 <input type="button" id="Aqua"  >
+							 </br>
+							 <input type="button" id="s2" value="2">
+							<input type="button" id="s4" value="4">
+							<input type="button" id="s6" value="6">   
+							<input type="button" id="s8" value="8">   
+							<input type="button" id="s10" value="10">   
+							<input type="button" id="s12" value="12">   
+							<input type="button" id="s14" value="14">
+							<input type="button" id="s16" value="16">
+							<input type="button" id="s18" value="18">
+							<input type="button" id="s20" value="20">
+							</div>
+					
+
+						<script>
+								/* When the user clicks on the button, 
+								toggle between hiding and showing the dropdown content */
+								function myFunction() {
+									document.getElementById("myDropdown").classList.toggle("show");
+								}
+
+								// Close the dropdown if the user clicks outside of it
+								window.onclick = function(event) {
+								  if (!event.target.matches('.dropbtn')) {
+
+									var dropdowns = document.getElementsByClassName("dropdown-content");
+									var i;
+									for (i = 0; i < dropdowns.length; i++) {
+									  var openDropdown = dropdowns[i];
+									  if (openDropdown.classList.contains('show')) {
+										openDropdown.classList.remove('show');
+									  }
+											}
+										  }
+										}
+							</script>
+
+
+
+				</div>
+	
+				<div id="buttons2">
+					  <input type="button" id="White" value="Erase" > 
+					  <input type="button" id="clear" value="Clear">
+	  
+				</div>
+				
+				<canvas id="paper" width="1900" height="1000">
+						Your browser needs to support canvas for this to work!
+				</canvas>
+			<footer>
+	        <h2>MultiApp Chat  Application</h2>
+			
         </footer>
-        
- 
+      
+		
+        <!-- JavaScript includes. Notice that socket.io.js is served by node.js -->
 		<script src="/socket.io/socket.io.js"></script>
 		<script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+<!--		<script src="http://localhost:8080/public/js/script-drawing.js"></script>-->
 
-        
+
+
+
+
+
+
+
     </body>
 </html>
