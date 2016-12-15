@@ -1,6 +1,6 @@
 {
-  "name": "Balloons.io",
-  "description": "Web multi-room chat server and client ready to use.",
+  "name": "MCCA",
+  "description": "Web multi-room chat server.",
   "version": "0.0.1",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",

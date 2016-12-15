@@ -1,5 +1,6 @@
 var crypto = require('crypto')
   , type = require('component-type');
+ // , Channel = require('./Model/channel');
 
 /*
  * Restrict paths
@@ -64,6 +65,25 @@ exports.createRoom = function(req, res, client) {
         locked: 0,
         online: 0
       };
+
+
+          // Insert channel in DB
+//          var Channel = new Channel();
+         
+//          Channel.name = req.body.room_name;
+//          Channel.user_id = req.user.userId;
+//          Channel.key = roomKey;
+//
+// 
+//          // save the user
+//          Channel.save(function(err) {
+//            if (err){
+//              console.log('Error in Saving channel: '+err);  
+//              throw err;  
+//            }
+//
+//          });
+          /*-----------------------------------------*/
 
   client.hmset('rooms:' + roomKey + ':info', room, function(err, ok) {
     if(!err && ok) {
