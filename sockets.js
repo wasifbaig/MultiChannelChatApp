@@ -117,7 +117,7 @@ function Sockets (app, server) {
         {
             nickname = hs.balloons.user.name;
             profileLink =  '';
-            userImg = '/img/logo.png';
+            userImg = '/img/user-default.png';
         }
     
       var userKey = provider + ":" + nickname + ":" + userId;  

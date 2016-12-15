@@ -1413,3 +1413,9 @@ input::-moz-input-placeholder {
     height:34px;
     margin-right: 5px;
 }
+
+.draw-icon{
+    height:25px;
+    width:25px;
+    margin-right:5px;
+}
