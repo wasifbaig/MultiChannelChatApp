@@ -7,7 +7,7 @@ $(function(){
 	}
 
 	// The URL of your web server (the port is set in app.js)
-	var url = 'http://192.168.178.20:6789';
+	//var url = 'http://149.222.157.42:6789';
         var url = 'http://localhost:6789';
 
 	var doc = $(document),

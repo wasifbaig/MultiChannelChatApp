@@ -126,7 +126,7 @@ function Sockets (app, server) {
       if(socketAdded) {
         client.sadd('socketio:sockets', socket.id);
         client.sadd('rooms:' + room_id + ':online', userKey, function(err, userAdded) {
-          if(!userAdded) {
+          if(userAdded) {
             client.hincrby('rooms:' + room_id + ':info', 'online', 1);
             client.get('users:' + userKey + ':status', function(err, status) {
               io.sockets.in(room_id).emit('new user', {
