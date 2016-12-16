@@ -120,6 +120,9 @@ function Translator() {
 
         recognition.start();
     }
+    
+
+    
 
     var self = this;
     self.processInWebWorker = function(args) {
