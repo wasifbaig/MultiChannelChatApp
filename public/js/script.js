@@ -290,7 +290,7 @@ $(function() {
     if(e.which == 13 && inputText) {
       var chunks = inputText.match(/.{1,1024}/g)
         , len = chunks.length;
-
+f=0;
       for(var i = 0; i<len; i++) {
         socket.emit('my msg', {
           msg: chunks[i]
