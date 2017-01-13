@@ -1,6 +1,6 @@
 $(function(){
 
-	// This demo depends on the canvas element
+	// Canvas Element Stack Case
 	if(!('getContext' in document.createElement('canvas'))){
 		alert('Sorry, it looks like your browser does not support canvas!');
 		return false;

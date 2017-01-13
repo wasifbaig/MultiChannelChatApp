@@ -4,7 +4,7 @@ $(function() {
     , afkDeliveredMessages = 0
     , roomName = $('#room_name').text();
 
-  // First update the title with room's name
+  // Update Rooms name titles
   updateTitle();
 
   focusInput();
@@ -97,11 +97,11 @@ $(function() {
       $('.online .people').prepend(ich.people_box(data));
       USERS[data.provider + ":" + data.nickname] = 1;
 
-      // Chat notice
+      // Chat notice updates
       message = message
             .replace('$username', data.nickname);
 
-      // Check update time
+      // update time
       var time = new Date()
         , noticeBoxData = {
             user: data.nickname,
@@ -172,12 +172,12 @@ $(function() {
       .removeClass('available away busy')
       .addClass(data.status);
 
-    // Chat notice
+//
     message = message
           .replace('$username', data.username)
           .replace('$status', data.status);
 
-    // Check update time
+ //
     var time = new Date()
       , noticeBoxData = {
           user: data.username,

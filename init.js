@@ -1,25 +1,19 @@
 
 /*
- * Initialize the application
+ * Initialize the application file
  */
 
 /*
- * Module dependencies
+ * Module dependencies call
  */
 
 var fs = require('fs');
 
 
-/*
- * Initialize the 
- *
- * @param {Object} Redis client instance
- * API @public
- */
 
 module.exports = function(client) {
   /*
-   * Clean all forgoten sockets in Redis.io
+   * Flush sockets in IO
    */
 
   // Delete all users sockets from their lists
@@ -28,7 +22,7 @@ module.exports = function(client) {
     console.log('Deletion of sockets reference for each user >> ', err || "Done!");
   });
 
-  // No one is online when starting up
+  // No one online at stat
   client.keys('rooms:*:online', function(err, keys) {
     var roomNames = [];
     
@@ -45,16 +39,11 @@ module.exports = function(client) {
     console.log('Deletion of online users from rooms >> ', err || "Done!");
   });
 
-  // Delete all socket.io's sockets data from Redis
+  // Del Socket.Io data from Cache Redis
   client.smembers('socketio:sockets', function(err, sockets) {
     if(sockets.length) client.del(sockets);
     console.log('Deletion of socket.io stored sockets data >> ', err || "Done!");
   });
-
-  /*
-   * Create 'chats' dir
-   */
-  // fs.mkdir('./chats');
 
 };
 

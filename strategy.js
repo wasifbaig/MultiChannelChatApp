@@ -1,6 +1,6 @@
-
 /*
- * Module dependencies
+ * MCCA FH KIEL
+ * Module dependencies on oauth2
  */
 
 var passport = require('passport')
@@ -24,8 +24,7 @@ module.exports = Strategy;
  * Defines Passport authentication
  * strategies from application configs
  *
- * @param {Express} app `Express` instance.
- * @api public
+ * removing irrelevant data
  */
 
 function Strategy (app) {
@@ -201,3 +200,4 @@ var createHash = function(password){
   
 }
 
+//file calling

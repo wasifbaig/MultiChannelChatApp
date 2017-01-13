@@ -1,6 +1,6 @@
 
 /*
- * Module dependencies
+ * Module dependencies required
  */
 
 var passport = require('passport')
@@ -8,24 +8,19 @@ var passport = require('passport')
   , express = require('express');
 
 /**
- * Expose routes
+ * Expose routes for modules liklihood
  */
 
 module.exports = Routes;
 
-/**
- * Defines routes for application
- *
- * @param {Express} app `Express` instance.
- * @api public
- */
+
 
 function Routes (app) {
   var config = app.get('config');
   var client = app.get('redisClient');
   
   /*
-   * Homepage
+   * Homepage calling
    */
 
   app.get('/', function(req, res, next) {
@@ -106,7 +101,7 @@ function Routes (app) {
   });
 
   /*
-   * Rooms list
+   * Rooms list cret
    */
 
   app.get('/rooms', utils.restrict, function(req, res) {
@@ -149,7 +144,7 @@ function Routes (app) {
   
   
   /*
-   * Create a rooom
+   * Create a room
    */
 
   app.post('/create', utils.restrict, function(req, res) {

@@ -25,11 +25,6 @@ mongoose.connect(dbConfig.url);
 
 require('./config')(app);
 
-/*
- * Clean db and create folder
- */
-
-// init(app.get('redisClient'));
 
 /*
  * Passportjs auth strategy

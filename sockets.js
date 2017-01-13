@@ -69,7 +69,7 @@ function Sockets (app, server) {
 	socket.on('mousemove', function (data) {
 		
                 console.log('mouse move');
-		// This line sends the event (broadcasts it)
+		// This line sends the event (broadcasts it) imp for mouse relatged data
 		// to everyone except the originating client.
 		socket.broadcast.emit('moving', data);
 	});
@@ -92,7 +92,7 @@ function Sockets (app, server) {
         , profileLink = ''
         , userId = hs.balloons.user.id;
         
-        
+     // Important for oauth for Single SIgn On   
     if(hs.balloons.user.provider === 'facebook'){
         nickname = hs.balloons.user.displayName;
         profileLink = "https://facebook.com/" + userId;

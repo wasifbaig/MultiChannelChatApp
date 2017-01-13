@@ -1,3 +1,5 @@
+//MCCA FHKiel
+
 var crypto = require('crypto')
   , type = require('component-type');
  // , Channel = require('./Model/channel');
@@ -67,23 +69,7 @@ exports.createRoom = function(req, res, client) {
       };
 
 
-          // Insert channel in DB
-//          var Channel = new Channel();
-         
-//          Channel.name = req.body.room_name;
-//          Channel.user_id = req.user.userId;
-//          Channel.key = roomKey;
-//
-// 
-//          // save the user
-//          Channel.save(function(err) {
-//            if (err){
-//              console.log('Error in Saving channel: '+err);  
-//              throw err;  
-//            }
-//
-//          });
-          /*-----------------------------------------*/
+     //removed unrealated areas
 
   client.hmset('rooms:' + roomKey + ':info', room, function(err, ok) {
     if(!err && ok) {
@@ -97,7 +83,7 @@ exports.createRoom = function(req, res, client) {
 };
 
 /*
- * Get Room Info
+ * Get Room Info from main element
  */
 
 exports.getRoomInfo = function(req, res, client, fn) { 
@@ -117,11 +103,11 @@ exports.getPublicRoomsInfo = function(client, fn) {
 
     publicRooms.forEach(function(roomKey, index) {
       client.hgetall('rooms:' + roomKey + ':info', function(err, room) {
-        // prevent for a room info deleted before this check
+        // prevent for a room info 
         if(!err && room && Object.keys(room).length) {
           // add room info
           rooms.push({
-            key: room.key || room.name, // temp
+            key: room.key || room.name, // tempr information
             name: room.name,
             online: room.online || 0
           });
@@ -129,7 +115,7 @@ exports.getPublicRoomsInfo = function(client, fn) {
           // check if last room
           if(rooms.length == len) fn(rooms);
         } else {
-          // reduce check length
+          // reduce check length at instant
           len -= 1;
         }
       });
@@ -137,7 +123,7 @@ exports.getPublicRoomsInfo = function(client, fn) {
   });
 };
 /*
- * Get connected users at room
+ * User get connected at homes
  */
 
 exports.getUsersInRoom = function(req, res, client, room, fn) {
@@ -177,7 +163,7 @@ exports.getUsersInRoom = function(req, res, client, room, fn) {
 };
 
 /*
- * Get public rooms
+ * Get public rooms from 9ds
  */
 
 exports.getPublicRooms = function(client, fn){
@@ -187,7 +173,7 @@ exports.getPublicRooms = function(client, fn){
   });
 };
 /*
- * Get User status
+ * Get User status from parsing file
  */
 
 exports.getUserStatus = function(user, client, fn){
@@ -197,9 +183,8 @@ exports.getUserStatus = function(user, client, fn){
   });
 };
 
-/*
- * Enter to a room
- */
+
+ // room enterance
 
 exports.enterRoom = function(req, res, room, users, rooms, status){
 
@@ -217,7 +202,7 @@ exports.enterRoom = function(req, res, room, users, rooms, status){
 };
 
 /*
- * Sort Case Insensitive
+ * Sort Case Insensitive method calling
  */
 
 exports.caseInsensitiveSort = function (a, b) { 
@@ -232,14 +217,7 @@ exports.caseInsensitiveSort = function (a, b) {
    return ret;
 };
 
-/**
- * Merge object `b` into `a`.
- *
- * @param {Object} a
- * @param {Object} b
- * @return {Object} a
- * @api public
- */
+
 
 exports.merge = function merge(a, b) {
   for (var key in b) {
@@ -254,9 +232,5 @@ exports.merge = function merge(a, b) {
   }
   return a;
 };
-
-/**
- * HOP 
- */
 
 exports.has = Object.prototype.hasOwnProperty;

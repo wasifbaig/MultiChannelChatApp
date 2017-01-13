@@ -1,10 +1,4 @@
-// Last time updated at Oct 15, 2015, 05:46:23
-
-// Muaz Khan      - www.MuazKhan.com
-// MIT License    - www.WebRTC-Experiment.com/licence
-
-// Source Code    - github.com/muaz-khan/Translator
-// Demo           - www.webrtc-experiment.com/Translator
+//MCCA Translator Module API
 
 function Translator() {
     this.voiceToText = function(callback, language) {
@@ -51,7 +45,7 @@ function Translator() {
 
     this.translateLanguage = function(text, config) {
         config = config || { };
-        // please use your own API key; if possible
+        // API key; if possible
         var api_key = config.api_key || Google_Translate_API_KEY;
 
         var newScript = document.createElement('script');
