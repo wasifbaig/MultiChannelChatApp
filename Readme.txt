@@ -1,5 +1,7 @@
-MCCA (Multi Channel Chat Application - with Redis and MongoDb)
 
+Note : It is a university project. We used Node.js, Redis, Html5, CSS3, Javascript, Jquery and Third-parties libraries such as language translator, login from github, facebook and twitter.
+
+MCCA (Multi Channel Chat Application)
 
 You can run the code by following below steps,
 
